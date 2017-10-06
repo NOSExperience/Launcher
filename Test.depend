@@ -5,7 +5,7 @@
 	<stdlib.h>
 	<GLFW/glfw3.h>
 
-1471519947 /usr/local/include//GLFW/glfw3.h
+1471541548 /usr/local/include//GLFW/glfw3.h
 	<stddef.h>
 	<stdint.h>
 	<OpenGL/gl3.h>
@@ -49,4 +49,46 @@
 	<stdint.h>
 	<inttypes.h>
 	<stdint.h>
+
+1505673820 source:/home/trevor/GamesAndServers/Launcher/glad/glad.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"glad.h"
+	<windows.h>
+	<dlfcn.h>
+
+1505673820 /home/trevor/GamesAndServers/Launcher/glad/glad.h
+	<windows.h>
+	<stddef.h>
+	"khrplatform.h"
+	<inttypes.h>
+	<inttypes.h>
+	<inttypes.h>
+	<stdint.h>
+	<stdint.h>
+	<inttypes.h>
+
+1505673820 /home/trevor/GamesAndServers/Launcher/glad/khrplatform.h
+	<stdint.h>
+	<inttypes.h>
+	<stdint.h>
+
+1505677024 source:/home/trevor/GamesAndServers/Launcher/main.c
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	"glad/glad.h"
+	<GLFW/glfw3.h>
+	"view_login.h"
+
+1505675045 /home/trevor/GamesAndServers/Launcher/view_login.h
+	"view.h"
+
+1505674934 /home/trevor/GamesAndServers/Launcher/view.h
+
+1505676926 source:/home/trevor/GamesAndServers/Launcher/view_login.c
+	"view_login.h"
+	"glad/glad.h"
+	<GLFW/glfw3.h>
 

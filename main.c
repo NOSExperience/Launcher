@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "glad/glad.h"
 #include <GLFW/glfw3.h>
+#include "view_login.h"
 
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 500;
@@ -11,10 +12,10 @@ const char WINDOW_TITLE[] = "NOSExperience";
 //
 // Global VARIABLES
 //
-struct _Model{
+struct Model {
     GLFWwindow *win;
-} _g_model;
-static struct _Model *g = &_g_model;
+} _g;
+static struct Model *g = &_g;
 //
 
 //
@@ -22,8 +23,16 @@ static struct _Model *g = &_g_model;
 //
 void init_glfw(void);
 void create_window(void);
+void center_window(void);
 void init_glad(void);
+void finish(void);
+
 //
+// Event HANDLERS
+//
+void on_close(GLFWwindow *win);
+//
+
 
 int main(int argc, char **argv)
 {
@@ -31,11 +40,12 @@ int main(int argc, char **argv)
     create_window();
     init_glad();
 
-    while(1) {
-        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        glfwSwapBuffers(g->win);
+    switch(view_login(g->win)) {
+        case ViewExit_EXIT:
+            finish();
+            break;
+        default:
+            break;
     }
 
     return 0;
@@ -58,6 +68,9 @@ void create_window(void)
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+    glfwWindowHint(GLFW_DECORATED, 0);
+    glfwWindowHint(GLFW_RESIZABLE, 0);
+
     GLFWwindow *w = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE, NULL, NULL);
     if(w) {
         g->win = w;
@@ -68,6 +81,15 @@ void create_window(void)
     glfwMakeContextCurrent(g->win);
 
     glfwSwapInterval(1);
+
+    glfwSetWindowCloseCallback(g->win, on_close);
+
+    center_window();
+}
+
+void center_window(void)
+{
+
 }
 
 void init_glad(void)
@@ -76,4 +98,19 @@ void init_glad(void)
         exit(-1);
     }
 }
+
+void finish(void)
+{
+    glfwTerminate();
+    exit(0);
+}
 //
+
+//
+// **APP WIDE** EVENT HANDLERS
+//
+
+void on_close(GLFWwindow *win)
+{
+    printf("Seeya!");
+}
